@@ -1,0 +1,65 @@
+{
+    "name": "zing/china-administrative-divisions-laravel",
+    "description": "Administrative divisions of China for Laravel",
+    "keywords": ["china", "administrative-divisions", "laravel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zingimmick",
+            "email": "zingimmick@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    },
+    "require": {
+        "php": "^7.2",
+        "illuminate/support": "^6.0 || ^7.0 || ^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0 || ^5.0",
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "zing/coding-standard": "^2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zing\\ChinaAdministrativeDivisions\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Zing\\ChinaAdministrativeDivisions\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "lint:rector": "@fix:rector --dry-run",
+        "lint:ecs": "ecs check --ansi",
+        "fix:rector": "rector process --ansi",
+        "fix:ecs": "@lint:ecs --fix",
+        "test:phpunit": "phpunit --colors=always",
+        "lint": [
+            "@lint:rector",
+            "@lint:ecs"
+        ],
+        "fix": [
+            "@fix:rector",
+            "@fix:ecs"
+        ],
+        "test": [
+            "@test:phpunit"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zing\\ChinaAdministrativeDivisions\\ChinaAdministrativeDivisionsServiceProvider"
+            ],
+            "aliases": {
+                "ChinaAdministrativeDivisions": "Zing\\ChinaAdministrativeDivisions\\Facades\\ChinaAdministrativeDivisions"
+            }
+        }
+    }
+}
