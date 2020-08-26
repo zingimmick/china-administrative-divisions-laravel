@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Zing\ChinaAdministrativeDivisions\Concerns;
-
 
 use Illuminate\Contracts\Support\Arrayable;
 use Zing\ChinaAdministrativeDivisions\Models\Province;
 
 /**
- * @property-read Province|null $auction
+ * @property-read \Zing\ChinaAdministrativeDivisions\Models\Province|null $auction
  *
  * @method static static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder whereProvinceCode($id)
  * @method static static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder whereProvinceCodeNot($id)

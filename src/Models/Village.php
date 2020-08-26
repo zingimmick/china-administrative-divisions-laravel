@@ -18,6 +18,7 @@ class Village extends Model
     use BelongsToStreet;
 
     public $timestamps = false;
+
     protected $fillable = [
         'code',
         'name',

@@ -13,13 +13,16 @@ class Area extends Model
 {
     use BelongsToProvince;
     use BelongsToCity;
-    public $timestamps=false;
+
+    public $timestamps = false;
+
     protected $fillable = [
         'code',
         'name',
         'province_code',
-        'city_code'
+        'city_code',
     ];
+
     public function streets(): HasMany
     {
         return $this->hasMany(Street::class, 'area_code', 'code');

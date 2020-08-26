@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Zing\ChinaAdministrativeDivisions\Concerns;
-
 
 use Illuminate\Contracts\Support\Arrayable;
 use Zing\ChinaAdministrativeDivisions\Models\Street;
 
 /**
- * @property-read Street|null $auction
+ * @property-read \Zing\ChinaAdministrativeDivisions\Models\Street|null $auction
  *
  * @method static static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder whereStreetCode($id)
  * @method static static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder whereStreetCodeNot($id)

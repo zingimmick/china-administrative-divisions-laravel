@@ -33,6 +33,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             FinalizeClassesWithoutChildrenRector::class,
             ChangeReadOnlyVariableWithDefaultValueToConstantRector::class,
             AddSeeTestAnnotationRector::class,
+            Rector\SOLID\Rector\Class_\RepeatedLiteralToClassConstantRector::class,
         ]
     );
     $parameters->set(

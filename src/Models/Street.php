@@ -15,14 +15,17 @@ class Street extends Model
     use BelongsToProvince;
     use BelongsToCity;
     use BelongsToArea;
-    public $timestamps=false;
+
+    public $timestamps = false;
+
     protected $fillable = [
         'code',
         'name',
         'province_code',
         'city_code',
-        'area_code'
+        'area_code',
     ];
+
     public function villages(): HasMany
     {
         return $this->hasMany(Village::class, 'street_code', 'code');
