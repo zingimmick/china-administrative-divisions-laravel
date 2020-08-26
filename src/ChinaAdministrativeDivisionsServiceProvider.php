@@ -26,7 +26,7 @@ class ChinaAdministrativeDivisionsServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom($this->getConfigPath(), 'china-administrative-divisions');
         if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__ . '../migrations');
+            $this->loadMigrationsFrom(__DIR__ . '/../migrations');
         }
     }
 
