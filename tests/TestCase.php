@@ -51,16 +51,16 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
                         collect($item['children'])->each(
                             function ($item) use ($city): void {
-                            $city->areas()->updateOrCreate(
-                                [
-                                    'code' => $item['code'],
-                                ],
-                                [
-                                    'name' => $item['name'],
-                                    'province_code' => $city->province_code,
-                                ]
-                            );
-                        }
+                                $city->areas()->updateOrCreate(
+                                    [
+                                        'code' => $item['code'],
+                                    ],
+                                    [
+                                        'name' => $item['name'],
+                                        'province_code' => $city->province_code,
+                                    ]
+                                );
+                            }
                         );
                     }
                 );
