@@ -14,6 +14,6 @@ class ChinaAdministrativeDivisions extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return 'skeleton';
+        return 'china-administrative-divisions';
     }
 }
