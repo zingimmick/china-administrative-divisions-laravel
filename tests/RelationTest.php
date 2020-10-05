@@ -15,58 +15,6 @@ class RelationTest extends TestCase
 {
     use WithFaker;
 
-    public function testModel(): void
-    {
-        collect(json_decode(file_get_contents(__DIR__ . '/../pca-code.json'), true))->each(
-            function ($item): void {
-                /** @var \Zing\ChinaAdministrativeDivisions\Models\Province $province */
-                $province = Province::query()->updateOrCreate(
-                    [
-                        'code' => $item['code'],
-                    ],
-                    [
-                        'name' => $item['name'],
-                    ]
-                );
-                collect($item['children'])->each(
-                    function ($item) use ($province): void {
-                        $city = $province->cities()->updateOrCreate(
-                            [
-                                'code' => $item['code'],
-                            ],
-                            [
-                                'name' => $item['name'],
-                            ]
-                        );
-
-                        collect($item['children'])->each(
-                            function ($item) use ($city): void {
-                                $city->areas()->updateOrCreate(
-                                    [
-                                        'code' => $item['code'],
-                                    ],
-                                    [
-                                        'name' => $item['name'],
-                                        'province_code' => $city->province_code,
-                                    ]
-                                );
-                            }
-                        );
-                    }
-                );
-            }
-        );
-        self::assertTrue(Province::query()->whereHas('cities')->exists());
-        self::assertTrue(City::query()->whereHas('areas')->exists());
-        self::assertTrue(Area::query()->whereHas('streets')->doesntExist());
-        self::assertTrue(Street::query()->whereHas('villages')->doesntExist());
-        $province = Province::query()->first();
-        self::assertTrue(City::query()->whereProvinceCode($province->code)->exists());
-        self::assertTrue(Area::query()->whereProvinceCode($province->code)->exists());
-        $city = City::query()->first();
-        self::assertTrue(Area::query()->whereCityCode($city->code)->exists());
-    }
-
     public function testRelation(): void
     {
         $province = Province::query()->create(

@@ -33,6 +33,11 @@ class Province extends Model
         'name',
     ];
 
+    public function getTable()
+    {
+        return config('china-administrative-divisions.table_names.provinces', parent::getTable());
+    }
+
     public function cities(): HasMany
     {
         return $this->hasMany(City::class, 'province_code', 'code');
