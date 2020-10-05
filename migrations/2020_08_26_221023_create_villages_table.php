@@ -14,7 +14,7 @@ class CreateVillagesTable extends Migration
     public function up()
     {
         Schema::create('villages', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('code')->unique()->comment('编码');
             $table->string('name')->default('')->comment('名称');
             $table->string('street_code')->index()->comment('乡级编码');

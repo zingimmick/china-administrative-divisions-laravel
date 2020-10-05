@@ -14,7 +14,7 @@ class CreateStreetsTable extends Migration
     public function up()
     {
         Schema::create('streets', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('code')->unique()->comment('编码');
             $table->string('name')->default('')->comment('名称');
             $table->string('area_code')->index()->comment('县级编码');

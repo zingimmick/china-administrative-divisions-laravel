@@ -14,7 +14,7 @@ class CreateAreasTable extends Migration
     public function up()
     {
         Schema::create('areas', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('code')->unique()->comment('编码');
             $table->string('name')->default('')->comment('名称');
             $table->string('city_code')->index()->comment('地级编码');
