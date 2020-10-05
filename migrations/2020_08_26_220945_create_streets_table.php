@@ -13,7 +13,7 @@ class CreateStreetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('streets', function (Blueprint $table) {
+        Schema::create(config('china-administrative-divisions.table_names.streets'), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code')->unique()->comment('编码');
             $table->string('name')->default('')->comment('名称');

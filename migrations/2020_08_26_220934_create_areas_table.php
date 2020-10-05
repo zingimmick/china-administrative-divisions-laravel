@@ -13,7 +13,7 @@ class CreateAreasTable extends Migration
      */
     public function up()
     {
-        Schema::create('areas', function (Blueprint $table) {
+        Schema::create(config('china-administrative-divisions.table_names.areas'), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code')->unique()->comment('编码');
             $table->string('name')->default('')->comment('名称');

@@ -44,6 +44,11 @@ class Area extends Model
         'city_code',
     ];
 
+    public function getTable()
+    {
+        return config('china-administrative-divisions.table_names.areas', parent::getTable());
+    }
+
     public function streets(): HasMany
     {
         return $this->hasMany(Street::class, 'area_code', 'code');

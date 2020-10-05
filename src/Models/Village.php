@@ -52,4 +52,9 @@ class Village extends Model
         'area_code',
         'street_code',
     ];
+
+    public function getTable()
+    {
+        return config('china-administrative-divisions.table_names.villages', parent::getTable());
+    }
 }

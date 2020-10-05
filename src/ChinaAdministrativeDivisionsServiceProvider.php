@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Zing\ChinaAdministrativeDivisions;
 
 use Illuminate\Support\ServiceProvider;
+use Zing\ChinaAdministrativeDivisions\Console\InitCommand;
 
 class ChinaAdministrativeDivisionsServiceProvider extends ServiceProvider
 {
@@ -18,8 +19,6 @@ class ChinaAdministrativeDivisionsServiceProvider extends ServiceProvider
                 'config'
             );
         }
-
-        $this->app->singleton('china-administrative-divisions', ChinaAdministrativeDivisionsManager::class);
     }
 
     public function register(): void
@@ -27,6 +26,7 @@ class ChinaAdministrativeDivisionsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($this->getConfigPath(), 'china-administrative-divisions');
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+            $this->commands([InitCommand::class]);
         }
     }
 
