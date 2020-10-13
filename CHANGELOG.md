@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+
+- [#4] Syncing from template
+
+## Unreleased
+
 ## [0.0.6] - 2020-10-05
 
 ### Added
@@ -25,3 +31,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#2]: https://github.com/zingimmick/china-administrative-divisions-laravel/pull/2
 [#1]: https://github.com/zingimmick/china-administrative-divisions-laravel/pull/1
 [0.0.6]: https://github.com/zingimmick/china-administrative-divisions-laravel/compare/0.0.5...0.0.6
+[#4]: https://github.com/zingimmick/china-administrative-divisions-laravel/pull/4
