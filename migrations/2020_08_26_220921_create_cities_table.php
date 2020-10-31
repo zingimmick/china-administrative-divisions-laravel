@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,14 +13,17 @@ class CreateCitiesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create(config('china-administrative-divisions.table_names.cities'), function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('code')->unique()->comment('编码');
-            $table->string('name')->default('')->comment('名称');
-            $table->string('province_code')->index()->comment('省级编码');
-        });
+        Schema::create(
+            config('china-administrative-divisions.table_names.cities'),
+            function (Blueprint $table): void {
+                $table->bigIncrements('id');
+                $table->string('code')->unique()->comment('编码');
+                $table->string('name')->default('')->comment('名称');
+                $table->string('province_code')->index()->comment('省级编码');
+            }
+        );
     }
 
     /**
@@ -26,7 +31,7 @@ class CreateCitiesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('cities');
     }
