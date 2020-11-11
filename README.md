@@ -16,6 +16,18 @@ Require ChinaAdministrativeDivisions Laravel using [Composer](https://getcompose
 composer create-project zing/china-administrative-divisions-laravel --prefer-source laravel-package
 ```
 
+## Init Tables
+
+```bash
+php artisan migrate
+```
+
+## Init Data
+
+```bash
+php artisan china-administrative-divisions:init
+```
+
 ## License
 
 ChinaAdministrativeDivisions Laravel is an open-sourced software licensed under the [MIT license](LICENSE).
