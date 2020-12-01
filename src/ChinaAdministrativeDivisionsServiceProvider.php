@@ -16,7 +16,13 @@ class ChinaAdministrativeDivisionsServiceProvider extends ServiceProvider
                 [
                     $this->getConfigPath() => config_path('china-administrative-divisions.php'),
                 ],
-                'config'
+                'china-administrative-divisions-config'
+            );
+            $this->publishes(
+                [
+                    $this->getMigrationsPath() => database_path('migrations'),
+                ],
+                'china-administrative-divisions-migrations'
             );
         }
     }
@@ -25,9 +31,22 @@ class ChinaAdministrativeDivisionsServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom($this->getConfigPath(), 'china-administrative-divisions');
         if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+            if ($this->shouldLoadMigrations()) {
+                $this->loadMigrationsFrom($this->getMigrationsPath());
+            }
+
             $this->commands([InitCommand::class]);
         }
+    }
+
+    protected function getMigrationsPath(): string
+    {
+        return __DIR__ . '/../migrations';
+    }
+
+    private function shouldLoadMigrations()
+    {
+        return config('china-administrative-divisions.load_migrations');
     }
 
     protected function getConfigPath(): string
