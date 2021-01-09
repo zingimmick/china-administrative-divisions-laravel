@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- changelog-linker -->
 
+## Unreleased
+
+### Changed
+
+- [#16] Update codecov/codecov-action action to v1.2.1
+- [#15] Update codecov/codecov-action action to v1.2.0
+- [#12] Update codecov/codecov-action action to v1.1.1
+- [#11] Update codecov/codecov-action action to v1.1.0
+- [#10] Bump paambaati/codeclimate-action from v2.7.4 to v2.7.5
+
 ## [1.0.2] - 2020-11-28
 
 ### Changed
@@ -19,8 +29,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - [#4] Syncing from template
-
-## Unreleased
 
 ## [0.0.6] - 2020-10-05
 
@@ -43,3 +51,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#7]: https://github.com/zingimmick/china-administrative-divisions-laravel/pull/7
 [#6]: https://github.com/zingimmick/china-administrative-divisions-laravel/pull/6
 [#5]: https://github.com/zingimmick/china-administrative-divisions-laravel/pull/5
+[#16]: https://github.com/zingimmick/china-administrative-divisions-laravel/pull/16
+[#15]: https://github.com/zingimmick/china-administrative-divisions-laravel/pull/15
+[#12]: https://github.com/zingimmick/china-administrative-divisions-laravel/pull/12
+[#11]: https://github.com/zingimmick/china-administrative-divisions-laravel/pull/11
+[#10]: https://github.com/zingimmick/china-administrative-divisions-laravel/pull/10
+[1.0.2]: https://github.com/zingimmick/china-administrative-divisions-laravel/compare/0.0.7...1.0.2
+[0.0.7]: https://github.com/zingimmick/china-administrative-divisions-laravel/compare/0.0.6...0.0.7
