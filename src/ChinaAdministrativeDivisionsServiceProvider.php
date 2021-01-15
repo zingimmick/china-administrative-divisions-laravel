@@ -44,7 +44,7 @@ class ChinaAdministrativeDivisionsServiceProvider extends ServiceProvider
         return __DIR__ . '/../migrations';
     }
 
-    private function shouldLoadMigrations()
+    private function shouldLoadMigrations(): bool
     {
         return config('china-administrative-divisions.load_migrations');
     }
