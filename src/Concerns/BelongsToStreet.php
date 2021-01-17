@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Zing\ChinaAdministrativeDivisions\Concerns;
 
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Zing\ChinaAdministrativeDivisions\Models\Street;
 
 /**
@@ -15,7 +16,7 @@ use Zing\ChinaAdministrativeDivisions\Models\Street;
  */
 trait BelongsToStreet
 {
-    public function street()
+    public function street(): BelongsTo
     {
         return $this->belongsTo(Street::class, $this->getStreetCodeName(), 'code');
     }
@@ -25,12 +26,12 @@ trait BelongsToStreet
         return 'street_code';
     }
 
-    public function getStreetCode()
+    public function getStreetCode(): ?string
     {
         return $this->getAttribute($this->getStreetCodeName());
     }
 
-    public function getQualifiedStreetCodeName()
+    public function getQualifiedStreetCodeName(): string
     {
         return $this->qualifyColumn($this->getStreetCodeName());
     }

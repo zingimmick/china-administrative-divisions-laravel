@@ -18,7 +18,10 @@ class InitCommand extends Command
     {
         $path = 'pca-code.json';
         if (! Storage::exists($path)) {
-            Storage::put($path, file_get_contents(__DIR__ . '/../../pca-code.json'));
+            $content = file_get_contents(__DIR__ . '/../../pca-code.json');
+            if ($content !== false) {
+                Storage::put($path, $content);
+            }
         }
 
         collect(json_decode(Storage::get($path), true))->each(

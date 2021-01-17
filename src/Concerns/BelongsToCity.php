@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Zing\ChinaAdministrativeDivisions\Concerns;
 
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Zing\ChinaAdministrativeDivisions\Models\City;
 
 /**
@@ -15,7 +16,7 @@ use Zing\ChinaAdministrativeDivisions\Models\City;
  */
 trait BelongsToCity
 {
-    public function city()
+    public function city(): BelongsTo
     {
         return $this->belongsTo(City::class, $this->getCityCodeName(), 'code');
     }
@@ -25,12 +26,12 @@ trait BelongsToCity
         return 'city_code';
     }
 
-    public function getCityCode()
+    public function getCityCode(): ?string
     {
         return $this->getAttribute($this->getCityCodeName());
     }
 
-    public function getQualifiedCityCodeName()
+    public function getQualifiedCityCodeName(): string
     {
         return $this->qualifyColumn($this->getCityCodeName());
     }

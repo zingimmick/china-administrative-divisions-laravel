@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Zing\ChinaAdministrativeDivisions\Concerns;
 
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Zing\ChinaAdministrativeDivisions\Models\Area;
 
 /**
@@ -15,7 +16,7 @@ use Zing\ChinaAdministrativeDivisions\Models\Area;
  */
 trait BelongsToArea
 {
-    public function area()
+    public function area(): BelongsTo
     {
         return $this->belongsTo(Area::class, $this->getAreaCodeName(), 'code');
     }
@@ -25,12 +26,12 @@ trait BelongsToArea
         return 'area_code';
     }
 
-    public function getAreaCode()
+    public function getAreaCode(): ?string
     {
         return $this->getAttribute($this->getAreaCodeName());
     }
 
-    public function getQualifiedAreaCodeName()
+    public function getQualifiedAreaCodeName(): string
     {
         return $this->qualifyColumn($this->getAreaCodeName());
     }
