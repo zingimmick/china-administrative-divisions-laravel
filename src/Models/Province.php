@@ -28,10 +28,7 @@ class Province extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = [
-        'code',
-        'name',
-    ];
+    protected $fillable = ['code', 'name'];
 
     public function getTable()
     {

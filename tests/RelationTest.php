@@ -23,58 +23,62 @@ class RelationTest extends TestCase
                 'name' => $this->faker->name,
             ]
         );
-        collect(range(1, $this->faker->numberBetween(2, 5)))->each(
-            function () use ($province): void {
-                $city = City::query()->create(
-                    [
-                        'code' => $this->faker->numberBetween(),
-                        'name' => $this->faker->name,
-                        'province_code' => $province->code,
-                    ]
-                );
-                collect(range(1, $this->faker->numberBetween(2, 5)))->each(
-                    function () use ($city): void {
-                        $area = Area::query()->create(
-                            [
-                                'code' => $this->faker->numberBetween(),
-                                'name' => $this->faker->name,
-                                'province_code' => $city->province_code,
-                                'city_code' => $city->code,
-                            ]
-                        );
-
-                        collect(range(1, $this->faker->numberBetween(2, 5)))->each(
-                            function () use ($area): void {
-                                $street = Street::query()->create(
+        collect(range(1, $this->faker->numberBetween(2, 5)))
+            ->each(
+                function () use ($province): void {
+                    $city = City::query()->create(
+                        [
+                            'code' => $this->faker->numberBetween(),
+                            'name' => $this->faker->name,
+                            'province_code' => $province->code,
+                        ]
+                    );
+                    collect(range(1, $this->faker->numberBetween(2, 5)))
+                        ->each(
+                            function () use ($city): void {
+                                $area = Area::query()->create(
                                     [
                                         'code' => $this->faker->numberBetween(),
                                         'name' => $this->faker->name,
-                                        'province_code' => $area->province_code,
-                                        'city_code' => $area->city_code,
-                                        'area_code' => $area->code,
+                                        'province_code' => $city->province_code,
+                                        'city_code' => $city->code,
                                     ]
                                 );
 
-                                collect(range(1, $this->faker->numberBetween(2, 5)))->each(
-                                    function () use ($street): void {
-                                        Village::query()->create(
-                                            [
-                                                'code' => $this->faker->numberBetween(),
-                                                'name' => $this->faker->name,
-                                                'province_code' => $street->province_code,
-                                                'city_code' => $street->city_code,
-                                                'area_code' => $street->area_code,
-                                                'street_code' => $street->code,
-                                            ]
-                                        );
-                                    }
-                                );
+                                collect(range(1, $this->faker->numberBetween(2, 5)))
+                                    ->each(
+                                        function () use ($area): void {
+                                            $street = Street::query()->create(
+                                                [
+                                                    'code' => $this->faker->numberBetween(),
+                                                    'name' => $this->faker->name,
+                                                    'province_code' => $area->province_code,
+                                                    'city_code' => $area->city_code,
+                                                    'area_code' => $area->code,
+                                                ]
+                                            );
+
+                                            collect(range(1, $this->faker->numberBetween(2, 5)))
+                                                ->each(
+                                                    function () use ($street): void {
+                                                        Village::query()->create(
+                                                            [
+                                                                'code' => $this->faker->numberBetween(),
+                                                                'name' => $this->faker->name,
+                                                                'province_code' => $street->province_code,
+                                                                'city_code' => $street->city_code,
+                                                                'area_code' => $street->area_code,
+                                                                'street_code' => $street->code,
+                                                            ]
+                                                        );
+                                                    }
+                                                );
+                                        }
+                                    );
                             }
                         );
-                    }
-                );
-            }
-        );
+                }
+            );
         self::assertTrue($province->cities()->exists());
         self::assertTrue($province->areas()->exists());
         self::assertTrue($province->streets()->exists());

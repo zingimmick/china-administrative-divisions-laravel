@@ -36,26 +36,25 @@ class InitCommand extends Command
                 );
                 collect($item['children'])->each(
                     function ($item) use ($province): void {
-                        $city = $province->cities()->updateOrCreate(
-                            [
+                        $city = $province->cities()
+                            ->updateOrCreate([
                                 'code' => $item['code'],
-                            ],
-                            [
+                            ], [
                                 'name' => $item['name'],
-                            ]
-                        );
+                            ]);
 
                         collect($item['children'])->each(
                             function ($item) use ($city): void {
-                                $city->areas()->updateOrCreate(
-                                    [
-                                        'code' => $item['code'],
-                                    ],
-                                    [
-                                        'name' => $item['name'],
-                                        'province_code' => $city->province_code,
-                                    ]
-                                );
+                                $city->areas()
+                                    ->updateOrCreate(
+                                        [
+                                            'code' => $item['code'],
+                                        ],
+                                        [
+                                            'name' => $item['name'],
+                                            'province_code' => $city->province_code,
+                                        ]
+                                    );
                             }
                         );
                     }
