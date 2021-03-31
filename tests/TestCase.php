@@ -17,17 +17,13 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function getEnvironmentSetUp($app): void
     {
-        config(
-            [
-                'database.default' => 'testing',
-            ]
-        );
+        config([
+            'database.default' => 'testing',
+        ]);
     }
 
     protected function getPackageProviders($app)
     {
-        return [
-            ChinaAdministrativeDivisionsServiceProvider::class,
-        ];
+        return [ChinaAdministrativeDivisionsServiceProvider::class];
     }
 }
