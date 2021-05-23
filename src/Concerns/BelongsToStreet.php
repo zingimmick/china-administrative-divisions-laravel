@@ -44,7 +44,10 @@ trait BelongsToStreet
      */
     public function scopeWhereStreetCode($query, $code)
     {
-        if (is_array($code) || $code instanceof Arrayable) {
+        if (is_array($code)) {
+            return $query->whereIn($this->getQualifiedStreetCodeName(), $code);
+        }
+        if ($code instanceof Arrayable) {
             return $query->whereIn($this->getQualifiedStreetCodeName(), $code);
         }
 
@@ -59,7 +62,10 @@ trait BelongsToStreet
      */
     public function scopeWhereStreetCodeNot($query, $code)
     {
-        if (is_array($code) || $code instanceof Arrayable) {
+        if (is_array($code)) {
+            return $query->whereNotIn($this->getQualifiedStreetCodeName(), $code);
+        }
+        if ($code instanceof Arrayable) {
             return $query->whereNotIn($this->getQualifiedStreetCodeName(), $code);
         }
 
