@@ -44,7 +44,10 @@ trait BelongsToCity
      */
     public function scopeWhereCityCode($query, $code)
     {
-        if (is_array($code) || $code instanceof Arrayable) {
+        if (is_array($code)) {
+            return $query->whereIn($this->getQualifiedCityCodeName(), $code);
+        }
+        if ($code instanceof Arrayable) {
             return $query->whereIn($this->getQualifiedCityCodeName(), $code);
         }
 
@@ -59,7 +62,10 @@ trait BelongsToCity
      */
     public function scopeWhereCityCodeNot($query, $code)
     {
-        if (is_array($code) || $code instanceof Arrayable) {
+        if (is_array($code)) {
+            return $query->whereNotIn($this->getQualifiedCityCodeName(), $code);
+        }
+        if ($code instanceof Arrayable) {
             return $query->whereNotIn($this->getQualifiedCityCodeName(), $code);
         }
 
